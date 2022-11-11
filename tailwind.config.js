@@ -2,7 +2,15 @@
 module.exports = {
   content: ["*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Inter var'],
+      },
+    },
   },
-  plugins: [],
+  plugins: [ 
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }
