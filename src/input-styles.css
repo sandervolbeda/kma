@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #FAF0E0;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+p {
+    margin-bottom: 16px;
+}
+
+a {
+    transition: all 0.1s ease-in-out;
+}
+
+a.btn {
+    background-color: #FA103E;
+    padding: 12px 24px;
+    display: inline-flex;
+    width: fit-content;
+    color: white;
+    flex-direction: row;
+    padding: 16px 32px;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+    transition: all 0.3s ease-in-out;
+}
+
+a.btn:hover {
+    background-color: #ba0327;
+}
+
+#navigation li a:hover {
+    text-decoration: underline;
+    opacity: 0.7;
+}
