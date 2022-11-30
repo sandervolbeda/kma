@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,6 +21,8 @@
 
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link rel="stylesheet" href="style.css">
+
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -32,17 +34,56 @@
 <body>
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KHX3Z4S"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <div class="container pt-5 mx-auto px-4">
-    <div class="flex flex-row items-center justify-between px-2 mb-8">
-      <a href="https://kindermes.nl/">
-        <img src="img/logo/kindermes-logo.png" alt="Kindermes logo">
-      </a>
-      <ul id="navigation" class="flex flex-row font-medium">
-        <li><a href="https://kindermes.nl/" class="p-1 hover:text-green-600">Home</a></li>
-        <li class="ml-3"><a href="https://kindermes.nl/houten-kindermes" class="p-1 hover:text-green-600">Houten kindermes</a></li>
-        <li class="ml-3"><a href="https://kindermes.nl/#aanbod" class="p-1 hover:text-green-600">Alle kindermessen</a></li>
-      </ul>
-    </div>
+  <div class="container pt-5 mx-auto px-4">    
+    <nav x-data="{ open: false }">
+      <div class="">
+        <div class="flex h-24">
+          <div class="flex justify-between w-full">
+            <div class="flex flex-shrink-0 items-center">
+              <a href="https://kindermes.nl/" class="h-full">
+                <img class="block h-full w-auto lg:hidden" src="img/logo/kindermes-logo.png" alt="Kindermes logo">
+              </a>
+              <a href="https://kindermes.nl/" class="h-full">
+                <img class="hidden h-full w-auto lg:block" src="img/logo/kindermes-logo.png" alt="Kindermes logo">
+              </a>
+            </div>
+            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+              <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
+              <a href="https://kindermes.nl/" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-900 hover:border-green-600 hover:text-gray-700">Home</a>
+              <a href="https://kindermes.nl/houten-kindermes" class="inline-flex items-center border-b-2 border-green-600 px-1 pt-1 text-sm font-medium text-gray-900">Houten kindermes</a>
+              <a href="https://kindermes.nl/#aanbod" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-900 hover:border-green-600 hover:text-gray-700">Alle kindermessen</a>
+              <a href="https://kindermes.nl/contact" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-900 hover:border-green-600 hover:text-gray-700">Contact</a>
+            </div>
+          </div>
+          <div class="-mr-2 flex items-center sm:hidden">
+            <!-- Mobile menu button -->
+            <button type="button" class="mr-4 md:mr-0 inline-flex items-center justify-center rounded-md p-2 text-gray-900 bg-white hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-900" aria-controls="mobile-menu" @click="open = !open" aria-expanded="false" x-bind:aria-expanded="open.toString()">
+              <span class="sr-only">Open main menu</span>
+              <svg x-description="Icon when menu is closed.
+  
+  Heroicon name: outline/bars-3" x-state:on="Menu open" x-state:off="Menu closed" class="block h-8 w-8" :class="{ 'hidden': open, 'block': !(open) }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#111827" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+  </svg>
+              <svg x-description="Icon when menu is open.
+  
+  Heroicon name: outline/x-mark" x-state:on="Menu open" x-state:off="Menu closed" class="hidden h-8 w-8" :class="{ 'block': open, 'hidden': !(open) }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#111827" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+  </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <div x-description="Mobile menu, show/hide based on menu state." class="sm:hidden" id="mobile-menu" x-show="open">
+        <div class="space-y-1 pt-2 pb-3 bg-white">
+          <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
+          <a href="https://kindermes.nl/" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Home</a>
+          <a href="https://kindermes.nl/houten-kindermes" class="block border-l-4 border-green-200 bg-green-600 py-2 pl-3 pr-4 text-base font-medium text-white">Houten kindermes</a>
+          <a href="https://kindermes.nl/#aanbod" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Alle kindermessen</a>
+          <a href="https://kindermes.nl/contact" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Contact</a>
+        </div>
+      </div>
+    </nav>
     
     <div class="flex flex-row items-center mt-20 mb-28 mx-auto w-full md:w-4/5">
       <div class="flex flex-col w-full md:w-3/5 pr-6 text-gray-900">
@@ -56,7 +97,7 @@
     </div>
 
     <div class="relative overflow-hidden py-16">
-      <div class="relative px-4 sm:px-6 lg:px-8">
+      <div class="relative">
         <div class="mx-auto max-w-prose text-lg">
           <h2>
             <span class="block text-center text-lg font-semibold text-green-600">Voordelen</span>
@@ -73,7 +114,7 @@
       </div>
     </div>
 
-    <div id="aanbod" class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div id="aanbod" class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-7xl">
       <h2 class="mt-2 block text-3xl font-bold leading-8 tracking-tight sm:text-4xl mb-4 text-gray-900">Alle houten kindermessen</h2>
       <p class="w-3/4 prose prose-lg prose-indigo text-gray-900">De laatste jaren is er steeds meer aandacht voor het betrekken van kinderen bij de keuken. Dit komt deels door de toenemende populariteit van kookprogramma's, maar het is ook omdat ouders zich realiseren hoe belangrijk het is hun kinderen te leren koken.</p>
       <p class="w-3/4 prose prose-lg prose-indigo text-gray-900">Een manier om kinderen te interesseren voor koken is door ze een eigen set houten kindermessen te geven. Deze messen zijn speciaal ontworpen voor kinderen en zijn veilig in gebruik.</p>
@@ -189,28 +230,27 @@
 
       </div>
     </div> 
-  </div>
 
-  <div class="relative overflow-hidden py-16">
-    <div class="relative px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-prose text-lg">
-        <h2>
-          <span class="mt-2 block text-center text-3xl font-bold leading-8 tracking-tight sm:text-4xl">Onderhouden</span>
-        </h2>
-        <p class="mt-8 text-xl leading-8">Deze houten kindermessen kunnen in de vaatwasser, al wordt het niet aangeraden. Het nadeel is dat de houten kindermenssen minder lang mee gaan. Zo kunnen ze in de vaatwasser hun vorm verliezer, minder 'scherp' worden of zelfs barsten.</p>
-        <div class="prose prose-lg prose-indigo mx-auto mt-6 text-gray-700">
-          <p>Doe houten kindermessen daarom NIET in de vaatwasser, maar was ze na gebruik met de hand af.</p>
+    <div class="relative overflow-hidden py-16">
+      <div class="relative">
+        <div class="mx-auto max-w-prose text-lg">
+          <h2>
+            <span class="mt-2 block text-center text-3xl font-bold leading-8 tracking-tight sm:text-4xl">Onderhouden</span>
+          </h2>
+          <p class="mt-8 text-xl leading-8">Deze houten kindermessen kunnen in de vaatwasser, al wordt het niet aangeraden. Het nadeel is dat de houten kindermenssen minder lang mee gaan. Zo kunnen ze in de vaatwasser hun vorm verliezer, minder 'scherp' worden of zelfs barsten.</p>
+          <div class="prose prose-lg prose-indigo mx-auto mt-6 text-gray-700">
+            <p>Doe houten kindermessen daarom NIET in de vaatwasser, maar was ze na gebruik met de hand af.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <footer class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="flex flex-row py-2 items-center justify-between text-sm">
-      <span>Sinds juni 2021</span>
-      <span>Content door <a href="https://ilsehaster.nl" class="underline">Ilse Haster</a> en gebouwd door <a href="https://sandervolbeda.com" class="class="underline">Sander Volbeda</a></span>
-    </div>
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <footer class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-7xl">
+      <div class="flex flex-col md:flex-row py-2 items-center justify-between text-sm text-center md:text-left">
+        <span class="mb-2">Sinds juni 2021</span>
+        <span class="mb-2">Content door <a href="https://ilsehaster.nl" class="underline">Ilse Haster</a> en gebouwd door <a href="https://sandervolbeda.com" class="underline">Sander Volbeda</a></span>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
